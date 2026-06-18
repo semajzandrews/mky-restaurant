@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MKY Restaurant · Sabor 100% Peruano en City of Orange, NJ</title>
+<meta name="description" content="MKY Restaurant en el 396 Main St, City of Orange. Cocina peruana casera: lomo saltado, ceviche, arroz chaufa y chicha morada. Hecho como en casa. Llama al (862) 704-2887." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=sentient@400,500,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --terracotta:#C8472B;
+    --terracotta-deep:#9a3420;
+    --andean:#1B5E4F;
+    --andean-deep:#123e34;
+    --warm:#FBF4E9;
+    --warm-2:#F4E7D2;
+    --ink:#2A1B12;
+    --ink-soft:#5c4636;
+    --gold:#E2A33C;
+    --line:rgba(42,27,18,.12);
+    --display:"Sentient",Georgia,serif;
+    --body:"General Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--warm);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+  ::selection{background:var(--terracotta);color:var(--warm)}
+  :focus-visible{outline:3px solid var(--andean);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    color:var(--terracotta);display:inline-flex;align-items:center;gap:.55rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--terracotta)}
+
+  /* ===== NAV ===== */
+  .nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,244,233,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;transition:border-color .3s,background .3s;
+  }
+  .nav.scrolled{border-bottom-color:var(--line);background:rgba(251,244,233,.94)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--display);font-weight:700;font-size:1.18rem;letter-spacing:-.02em}
+  .brand .mark{
+    width:38px;height:38px;border-radius:50%;flex:none;
+    background:var(--andean);color:var(--warm);
+    display:grid;place-items:center;font-size:.92rem;font-weight:700;
+    box-shadow:inset 0 0 0 2px rgba(251,244,233,.25);
+  }
+  .brand small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.22em;font-weight:600;color:var(--andean);text-transform:uppercase;margin-top:1px}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);position:relative;transition:color .2s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--terracotta);transition:width .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-right{display:flex;align-items:center;gap:1rem}
+  .lang-toggle{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:.72rem;font-weight:600}
+  .lang-toggle button{background:none;border:none;padding:.4rem .7rem;cursor:pointer;color:var(--ink-soft);font-family:var(--body);font-weight:600;letter-spacing:.04em}
+  .lang-toggle button.on{background:var(--andean);color:var(--warm)}
+  .call-btn{
+    display:inline-flex;align-items:center;gap:.5rem;background:var(--terracotta);color:var(--warm);
+    padding:.62rem 1.15rem;border-radius:999px;font-weight:600;font-size:.9rem;
+    transition:transform .18s,background .2s;white-space:nowrap;
+  }
+  .call-btn:hover{background:var(--terracotta-deep);transform:translateY(-2px)}
+  .call-btn svg{width:16px;height:16px}
+  .call-icon{display:none}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:clamp(2.6rem,7vw,5.2rem) 0 clamp(2.4rem,5vw,4rem)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,4vw,3.6rem);align-items:center}
+  .status-pill{
+    display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;color:var(--ink-soft);
+    margin-bottom:1.5rem;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--andean);box-shadow:0 0 0 4px rgba(27,94,79,.16)}
+  .dot.closed{background:#b54b34;box-shadow:0 0 0 4px rgba(181,75,52,.16)}
+  .hero h1{font-size:clamp(2.7rem,7.2vw,4.7rem);margin:.2rem 0 1.1rem}
+  .hero h1 em{font-style:normal;color:var(--terracotta);font-weight:700}
+  .hero .lede{font-size:clamp(1.02rem,2.1vw,1.18rem);color:var(--ink-soft);max-width:34ch;margin-bottom:1.9rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+  .btn-primary{background:var(--andean);color:var(--warm);padding:.85rem 1.5rem;border-radius:999px;font-weight:600;transition:transform .18s,background .2s}
+  .btn-primary:hover{background:var(--andean-deep);transform:translateY(-2px)}
+  .btn-ghost{padding:.85rem 1.3rem;border-radius:999px;font-weight:600;border:1.5px solid var(--line);color:var(--ink);transition:border-color .2s,background .2s}
+  .btn-ghost:hover{border-color:var(--terracotta);background:#fff}
+  .hero-meta{display:flex;gap:1.9rem;margin-top:2.2rem;flex-wrap:wrap}
+  .hero-meta div{display:flex;flex-direction:column}
+  .hero-meta .k{font-family:var(--display);font-size:1.5rem;color:var(--terracotta);font-weight:700}
+  .hero-meta .l{font-size:.78rem;color:var(--ink-soft);letter-spacing:.04em}
+
+  .hero-art{position:relative}
+  .hero-photo{
+    border-radius:18px 18px 90px 18px;overflow:hidden;aspect-ratio:4/5;
+    box-shadow:0 30px 60px -28px rgba(42,27,18,.45);position:relative;
+  }
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .hero-badge{
+    position:absolute;left:-14px;bottom:26px;background:var(--warm);
+    border:1px solid var(--line);border-radius:16px;padding:.85rem 1.1rem;
+    box-shadow:0 16px 36px -18px rgba(42,27,18,.4);max-width:215px;
+  }
+  .hero-badge strong{font-family:var(--display);font-size:1.05rem;display:block;color:var(--andean)}
+  .hero-badge span{font-size:.8rem;color:var(--ink-soft)}
+  .flag-stripe{position:absolute;top:-10px;right:18px;display:flex;gap:5px;z-index:2}
+  .flag-stripe i{width:9px;height:34px;border-radius:6px;display:block}
+  .flag-stripe i:nth-child(1),.flag-stripe i:nth-child(3){background:var(--terracotta)}
+  .flag-stripe i:nth-child(2){background:var(--warm)}
+
+  /* ===== STRIP ===== */
+  .strip{background:var(--andean);color:var(--warm);overflow:hidden;padding:.9rem 0}
+  .strip-track{display:flex;gap:3.5rem;white-space:nowrap;animation:marq 28s linear infinite;width:max-content}
+  .strip-track span{font-family:var(--display);font-size:1.05rem;display:inline-flex;align-items:center;gap:3.5rem;letter-spacing:.01em}
+  .strip-track span::after{content:"✦";color:var(--gold);font-size:.8rem}
+  @keyframes marq{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+  /* ===== SECTION SHELL ===== */
+  section{position:relative}
+  .pad{padding:clamp(3.6rem,8vw,6rem) 0}
+  .sec-head{max-width:640px;margin-bottom:2.8rem}
+  .sec-head h2{font-size:clamp(2rem,4.6vw,3rem);margin:.7rem 0 .9rem}
+  .sec-head p{color:var(--ink-soft);font-size:1.04rem}
+
+  /* ===== PLATO DEL DIA (signature flip cards) ===== */
+  #carta{background:var(--warm-2)}
+  .dishes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+  .flip{perspective:1400px;height:380px;cursor:pointer}
+  .flip-in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+  .flip.on .flip-in{transform:rotateY(180deg)}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+  .face.front{background:#000}
+  .face.front img{width:100%;height:100%;object-fit:cover;opacity:.92}
+  .front-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,7,.92) 0%,rgba(20,12,7,.15) 55%,transparent 100%)}
+  .front-txt{position:absolute;left:0;right:0;bottom:0;padding:1.2rem 1.25rem;color:var(--warm)}
+  .front-txt h3{color:var(--warm);font-size:1.42rem;margin-bottom:.25rem}
+  .front-txt .es{font-size:.86rem;color:rgba(251,244,233,.8)}
+  .tap-hint{position:absolute;top:14px;right:14px;background:rgba(251,244,233,.92);color:var(--terracotta-deep);font-size:.68rem;font-weight:600;padding:.32rem .6rem;border-radius:999px;letter-spacing:.06em;display:inline-flex;align-items:center;gap:.35rem}
+  .face.back{
+    transform:rotateY(180deg);background:var(--warm);
+    padding:1.5rem 1.4rem;display:flex;flex-direction:column;
+  }
+  .face.back h3{color:var(--terracotta);font-size:1.3rem;margin-bottom:.5rem}
+  .face.back .body{font-size:.92rem;color:var(--ink-soft);flex:1}
+  .face.back .ingredients{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+  .face.back .ingredients span{font-size:.72rem;background:var(--warm-2);border:1px solid var(--line);padding:.25rem .6rem;border-radius:999px;color:var(--ink-soft)}
+  .back-foot{margin-top:1rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);padding-top:.85rem}
+  .back-foot .price{font-family:var(--display);font-size:1.25rem;color:var(--andean);font-weight:700}
+  .back-foot .note{font-size:.72rem;color:var(--ink-soft)}
+
+  /* citrus + steam micro animation, on hot/cold tagged cards */
+  .heat{position:absolute;top:18px;left:16px;display:flex;flex-direction:column;gap:5px;z-index:3;pointer-events:none}
+  .steam{width:5px;height:22px;border-radius:6px;background:rgba(251,244,233,.55);filter:blur(2px);animation:steam 2.6s ease-in-out infinite}
+  .steam:nth-child(2){animation-delay:.5s;height:16px}
+  .steam:nth-child(3){animation-delay:1s;height:19px}
+  @keyframes steam{0%{opacity:0;transform:translateY(6px) scaleY(.6)}40%{opacity:.9}100%{opacity:0;transform:translateY(-14px) scaleY(1.2)}}
+  .citrus{position:absolute;top:16px;left:16px;width:30px;height:30px;border-radius:50%;background:var(--gold);z-index:3;pointer-events:none;box-shadow:0 0 0 0 rgba(226,163,60,.55);animation:cit 3s ease-out infinite}
+  .citrus::before{content:"";position:absolute;inset:6px;border-radius:50%;border:1.5px solid rgba(251,244,233,.7)}
+  @keyframes cit{0%{box-shadow:0 0 0 0 rgba(226,163,60,.5)}70%{box-shadow:0 0 0 16px rgba(226,163,60,0)}100%{box-shadow:0 0 0 0 rgba(226,163,60,0)}}
+  @media (prefers-reduced-motion:reduce){.steam,.citrus{animation:none}}
+
+  /* ===== STORY / split ===== */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.8rem,5vw,4rem);align-items:center}
+  .story-img{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  .story-img figure{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .story-img figure img{width:100%;height:100%;object-fit:cover}
+  .story-img figure:first-child{grid-row:span 2;border-radius:14px 14px 14px 60px}
+  .story-img figure img{aspect-ratio:1/1.15}
+  .story-img figure:first-child img{aspect-ratio:.8/1}
+  .story-copy h2{font-size:clamp(2rem,4.4vw,2.9rem);margin:.8rem 0 1.1rem}
+  .story-copy p{color:var(--ink-soft);margin-bottom:1rem;max-width:46ch}
+  .story-list{list-style:none;margin-top:1.4rem;display:grid;gap:.85rem}
+  .story-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:.96rem}
+  .story-list li b{color:var(--ink);font-weight:600}
+  .check{flex:none;width:24px;height:24px;border-radius:50%;background:var(--andean);color:var(--warm);display:grid;place-items:center;font-size:.7rem;margin-top:1px}
+
+  /* ===== HOURS + MAP ===== */
+  #visita{background:var(--ink);color:var(--warm)}
+  #visita .eyebrow{color:var(--gold)}
+  #visita .eyebrow::before{background:var(--gold)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(1.6rem,4vw,3rem);align-items:stretch}
+  .visit-info h2{color:var(--warm);font-size:clamp(2rem,4.4vw,2.9rem);margin:.7rem 0 1.4rem}
+  .hours-table{width:100%;border-collapse:collapse;margin-bottom:1.8rem}
+  .hours-table td{padding:.62rem 0;border-bottom:1px solid rgba(251,244,233,.14);font-size:.96rem}
+  .hours-table td:last-child{text-align:right;color:rgba(251,244,233,.85);font-variant-numeric:tabular-nums}
+  .hours-table tr.today td{color:var(--gold)}
+  .hours-table tr.today td:first-child{font-weight:600}
+  .visit-contact{display:grid;gap:.7rem;font-size:.96rem}
+  .visit-contact a{display:inline-flex;align-items:center;gap:.65rem;color:var(--warm)}
+  .visit-contact a:hover{color:var(--gold)}
+  .visit-contact svg{width:17px;height:17px;flex:none;color:var(--gold)}
+  .map-frame{position:relative;border-radius:18px;overflow:hidden;min-height:360px;height:100%;border:1px solid rgba(251,244,233,.18)}
+  .map-frame iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+  .map-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(27,94,79,.10),rgba(42,27,18,.22));mix-blend-mode:multiply}
+
+  /* ===== REVIEW (soft, single tasteful) ===== */
+  #words .pad{padding-bottom:2rem}
+  .quote-wrap{max-width:760px;margin:0 auto;text-align:center}
+  .quote-wrap .stars{color:var(--gold);letter-spacing:.2em;font-size:1.1rem;margin-bottom:1.2rem}
+  .quote-wrap blockquote{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.05rem);line-height:1.3;color:var(--ink)}
+  .quote-wrap cite{display:block;margin-top:1.3rem;font-style:normal;font-size:.86rem;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase}
+
+  /* ===== CTA ===== */
+  #pedir{background:var(--terracotta);color:var(--warm);text-align:center;overflow:hidden;position:relative}
+  #pedir::before,#pedir::after{content:"";position:absolute;border-radius:50%;opacity:.16;background:var(--warm)}
+  #pedir::before{width:260px;height:260px;top:-110px;left:-60px}
+  #pedir::after{width:200px;height:200px;bottom:-90px;right:-40px}
+  .cta-in{position:relative;z-index:2;max-width:640px;margin:0 auto}
+  .cta-in h2{color:var(--warm);font-size:clamp(2.1rem,5vw,3.2rem);margin-bottom:1rem}
+  .cta-in p{color:rgba(251,244,233,.9);font-size:1.08rem;margin-bottom:2rem}
+  .cta-btns{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+  .cta-btns a{padding:.95rem 1.7rem;border-radius:999px;font-weight:600;font-size:1rem}
+  .cta-call{background:var(--warm);color:var(--terracotta-deep);transition:transform .18s}
+  .cta-call:hover{transform:translateY(-2px)}
+  .cta-dir{border:1.5px solid rgba(251,244,233,.7);color:var(--warm);transition:background .2s}
+  .cta-dir:hover{background:rgba(251,244,233,.14)}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--andean-deep);color:rgba(251,244,233,.82);padding:3.4rem 0 2rem}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2.4rem}
+  .foot-brand .brand{color:var(--warm);margin-bottom:.9rem}
+  .foot-brand .mark{background:var(--terracotta)}
+  .foot-brand p{font-size:.92rem;max-width:34ch}
+  .foot-col h4{font-family:var(--body);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:600}
+  .foot-col a,.foot-col p{display:block;font-size:.92rem;margin-bottom:.55rem;color:rgba(251,244,233,.82)}
+  .foot-col a:hover{color:var(--warm)}
+  .foot-bottom{border-top:1px solid rgba(251,244,233,.16);padding-top:1.6rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+  .made-by{display:inline-flex;align-items:center;gap:.5rem;color:rgba(251,244,233,.7)}
+  .made-by a{color:var(--gold);font-weight:600;border-bottom:1px solid transparent;transition:border-color .2s}
+  .made-by a:hover{border-bottom-color:var(--gold)}
+  .made-by .spark{width:6px;height:6px;border-radius:50%;background:var(--terracotta)}
+
+  /* ===== FIXED CALL (mobile) ===== */
+  .fixed-call{display:none}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-art{max-width:440px;margin:0 auto;order:-1}
+    .dishes{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr}
+    .story-img{order:-1;max-width:520px}
+    .visit-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:680px){
+    .nav-links{display:none}
+    .brand{font-size:1.04rem}
+    .brand .mark{width:34px;height:34px;font-size:.82rem}
+    .nav-in{height:64px}
+    .lang-toggle{order:1}
+    .call-btn span{display:none}
+    .call-btn{padding:0;width:46px;height:46px;justify-content:center;border-radius:50%}
+    .call-btn svg{width:18px;height:18px}
+    .hero-meta{gap:1.3rem}
+    .dishes{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+    .flip{height:420px}
+    .foot-grid{grid-template-columns:1fr}
+    .foot-bottom{flex-direction:column;align-items:flex-start}
+    .fixed-call{
+      display:flex;position:fixed;right:16px;bottom:16px;z-index:80;
+      width:56px;height:56px;border-radius:50%;background:var(--terracotta);color:var(--warm);
+      align-items:center;justify-content:center;box-shadow:0 12px 28px -10px rgba(200,71,43,.7);
+    }
+    .fixed-call svg{width:22px;height:22px}
+  }
+  @media (max-width:380px){
+    .wrap{padding:0 16px}
+    .hero h1{font-size:2.4rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="MKY Restaurant inicio">
+      <span class="mark">MKY</span>
+      <span>MKY Restaurant<small data-es="Cocina Peruana" data-en="Peruvian Kitchen">Cocina Peruana</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#carta" data-es="La Carta" data-en="The Menu">La Carta</a>
+      <a href="#historia" data-es="Nuestra Mesa" data-en="Our Table">Nuestra Mesa</a>
+      <a href="#visita" data-es="Visítanos" data-en="Visit Us">Visítanos</a>
+      <a href="#pedir" data-es="Ordenar" data-en="Order">Ordenar</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+        <button id="es-btn" class="on" aria-pressed="true">ES</button>
+        <button id="en-btn" aria-pressed="false">EN</button>
+      </div>
+      <a class="call-btn" href="tel:+18627042887" aria-label="Llamar al (862) 704-2887">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>(862) 704-2887</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="status-pill"><span class="dot" id="dot"></span><span id="status-text">Calculando horario</span></span>
+      <span class="eyebrow" data-es="100% Peruano · 396 Main St" data-en="100% Peruvian · 396 Main St">100% Peruano · 396 Main St</span>
+      <h1 data-es='El sabor de casa, <em>servido en Orange</em>' data-en='The taste of home, <em>served in Orange</em>'>El sabor de casa, <em>servido en Orange</em></h1>
+      <p class="lede" data-es="Cocina peruana de verdad, hecha a mano cada día. Ceviche fresco, lomo saltado en su punto y chicha morada como la de la abuela." data-en="Real Peruvian cooking, made by hand every day. Fresh ceviche, lomo saltado done right, and chicha morada just like abuela's.">Cocina peruana de verdad, hecha a mano cada día. Ceviche fresco, lomo saltado en su punto y chicha morada como la de la abuela.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#carta" data-es="Ver la carta" data-en="See the menu">Ver la carta</a>
+        <a class="btn-ghost" href="tel:+18627042887" data-es="Llamar para ordenar" data-en="Call to order">Llamar para ordenar</a>
+      </div>
+      <div class="hero-meta">
+        <div><span class="k">Abierto</span><span class="l" data-es="desde las 5:30 AM" data-en="from 5:30 AM">desde las 5:30 AM</span></div>
+        <div><span class="k">Casero</span><span class="l" data-es="recetas de familia" data-en="family recipes">recetas de familia</span></div>
+        <div><span class="k">Para llevar</span><span class="l" data-es="o comer aquí" data-en="or dine in">o comer aquí</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="flag-stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80" alt="Plato de lomo saltado peruano con papas fritas y arroz, servido caliente" loading="eager" />
+      </div>
+      <div class="hero-badge">
+        <strong data-es="Hecho a mano" data-en="Made by hand">Hecho a mano</strong>
+        <span data-es="cada plato sale de la cocina, no del congelador" data-en="every plate comes from the kitchen, not the freezer">cada plato sale de la cocina, no del congelador</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Lomo Saltado<span></span></span><span>Ceviche Fresco</span><span>Arroz Chaufa</span><span>Chicharrón</span><span>Leche de Tigre</span><span>Chicha Morada</span><span>Tallarín Saltado</span>
+    <span>Lomo Saltado</span><span>Ceviche Fresco</span><span>Arroz Chaufa</span><span>Chicharrón</span><span>Leche de Tigre</span><span>Chicha Morada</span><span>Tallarín Saltado</span>
+  </div>
+</div>
+
+<!-- CARTA / signature flip cards -->
+<section id="carta" class="pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow" data-es="El Plato del Día" data-en="Dish of the Day">El Plato del Día</span>
+      <h2 data-es="Toca un plato y conócelo" data-en="Tap a plate to meet it">Toca un plato y conócelo</h2>
+      <p data-es="Lo que sale de nuestra cocina, contado plato por plato. Toca cada tarjeta para ver de qué está hecho." data-en="What comes out of our kitchen, told plate by plate. Tap a card to see what it's made of.">Lo que sale de nuestra cocina, contado plato por plato. Toca cada tarjeta para ver de qué está hecho.</p>
+    </div>
+
+    <div class="dishes">
+
+      <!-- Lomo Saltado (hot / steam) -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Lomo Saltado, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <div class="heat" aria-hidden="true"><span class="steam"></span><span class="steam"></span><span class="steam"></span></div>
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80" alt="Lomo saltado humeante con carne de res, tomate y cebolla salteados al wok" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3>Lomo Saltado</h3><span class="es" data-es="Carne salteada al wok" data-en="Wok-seared beef">Carne salteada al wok</span></div>
+          </div>
+          <div class="face back">
+            <h3>Lomo Saltado</h3>
+            <p class="body" data-es="Lomo de res salteado a fuego alto con cebolla roja, tomate y un toque de sillao. Va con papas fritas crujientes y arroz blanco. Caliente y jugoso, como debe ser." data-en="Beef sirloin seared over high heat with red onion, tomato and a touch of soy. Served with crispy fries and white rice. Hot and juicy, the way it should be.">Lomo de res salteado a fuego alto con cebolla roja, tomate y un toque de sillao. Va con papas fritas crujientes y arroz blanco. Caliente y jugoso, como debe ser.</p>
+            <div class="ingredients"><span data-es="Res" data-en="Beef">Res</span><span data-es="Cebolla roja" data-en="Red onion">Cebolla roja</span><span data-es="Papas fritas" data-en="Fries">Papas fritas</span><span data-es="Arroz" data-en="Rice">Arroz</span></div>
+            <div class="back-foot"><span class="price" data-es="Plato fuerte" data-en="Main plate">Plato fuerte</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ceviche (cold / citrus pulse) -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Ceviche, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <div class="citrus" aria-hidden="true"></div>
+            <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?auto=format&fit=crop&w=700&q=80" alt="Ceviche peruano de pescado fresco con cebolla, ají y limón" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3>Ceviche</h3><span class="es" data-es="Pescado fresco en limón" data-en="Fresh fish in lime">Pescado fresco en limón</span></div>
+          </div>
+          <div class="face back">
+            <h3>Ceviche</h3>
+            <p class="body" data-es="Pescado fresco curado en jugo de limón con cebolla, cilantro y ají. Servido bien frío con su leche de tigre. Brillante, cítrico y vivo en cada bocado." data-en="Fresh fish cured in lime juice with onion, cilantro and ají. Served ice-cold with its leche de tigre. Bright, citrusy and alive in every bite.">Pescado fresco curado en jugo de limón con cebolla, cilantro y ají. Servido bien frío con su leche de tigre. Brillante, cítrico y vivo en cada bocado.</p>
+            <div class="ingredients"><span data-es="Pescado" data-en="Fish">Pescado</span><span data-es="Limón" data-en="Lime">Limón</span><span data-es="Ají" data-en="Chili">Ají</span><span data-es="Cilantro" data-en="Cilantro">Cilantro</span></div>
+            <div class="back-foot"><span class="price" data-es="Fresco del día" data-en="Fresh daily">Fresco del día</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arroz Chaufa -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Arroz Chaufa, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <div class="heat" aria-hidden="true"><span class="steam"></span><span class="steam"></span><span class="steam"></span></div>
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=700&q=80" alt="Arroz chaufa peruano salteado con pollo, huevo y cebollín" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3>Arroz Chaufa</h3><span class="es" data-es="Arroz al wok criollo-chino" data-en="Criollo-Chinese fried rice">Arroz al wok criollo-chino</span></div>
+          </div>
+          <div class="face back">
+            <h3>Arroz Chaufa</h3>
+            <p class="body" data-es="El arroz frito peruano: salteado al wok con huevo, cebollín, sillao y tu proteína, pollo o res. Humeante, ahumado y reconfortante." data-en="Peru's fried rice: wok-tossed with egg, scallion, soy and your protein, chicken or beef. Steamy, smoky and comforting.">El arroz frito peruano: salteado al wok con huevo, cebollín, sillao y tu proteína, pollo o res. Humeante, ahumado y reconfortante.</p>
+            <div class="ingredients"><span data-es="Arroz" data-en="Rice">Arroz</span><span data-es="Huevo" data-en="Egg">Huevo</span><span data-es="Pollo o res" data-en="Chicken or beef">Pollo o res</span><span data-es="Cebollín" data-en="Scallion">Cebollín</span></div>
+            <div class="back-foot"><span class="price" data-es="Plato fuerte" data-en="Main plate">Plato fuerte</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chicharrón -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Chicharrón, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=700&q=80" alt="Chicharrón dorado y crujiente, recién frito, con salsa al lado" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3>Chicharrón</h3><span class="es" data-es="Cerdo crocante de mañana" data-en="Crispy morning pork">Cerdo crocante de mañana</span></div>
+          </div>
+          <div class="face back">
+            <h3>Chicharrón</h3>
+            <p class="body" data-es="Cerdo frito hasta quedar dorado y crocante, con camote y cancha tostada. El desayuno peruano de fin de semana, listo desde temprano." data-en="Pork fried golden and crisp, with sweet potato and toasted corn. The Peruvian weekend breakfast, ready bright and early.">Cerdo frito hasta quedar dorado y crocante, con camote y cancha tostada. El desayuno peruano de fin de semana, listo desde temprano.</p>
+            <div class="ingredients"><span data-es="Cerdo" data-en="Pork">Cerdo</span><span data-es="Camote" data-en="Sweet potato">Camote</span><span data-es="Cancha" data-en="Toasted corn">Cancha</span></div>
+            <div class="back-foot"><span class="price" data-es="Para el desayuno" data-en="For breakfast">Para el desayuno</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pescado Frito -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Pescado Frito, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <img src="https://images.unsplash.com/photo-1580476262798-bddd9f4b7369?auto=format&fit=crop&w=700&q=80" alt="Filete de pescado frito al estilo peruano servido en plato blanco" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3>Pescado Frito</h3><span class="es" data-es="Filete al estilo peruano" data-en="Fillet, Peruvian style">Filete al estilo peruano</span></div>
+          </div>
+          <div class="face back">
+            <h3>Pescado Frito</h3>
+            <p class="body" data-es="Filete de pescado fresco dorado al sartén, marinado al estilo peruano y servido con arroz y su sarsa criolla. Sencillo, fresco y bien hecho." data-en="Fresh fish fillet pan-fried golden, marinated Peruvian style and served with rice and sarsa criolla. Simple, fresh and done right.">Filete de pescado fresco dorado al sartén, marinado al estilo peruano y servido con arroz y su sarsa criolla. Sencillo, fresco y bien hecho.</p>
+            <div class="ingredients"><span data-es="Pescado" data-en="Fish">Pescado</span><span data-es="Limón" data-en="Lime">Limón</span><span data-es="Sarsa criolla" data-en="Sarsa criolla">Sarsa criolla</span><span data-es="Arroz" data-en="Rice">Arroz</span></div>
+            <div class="back-foot"><span class="price" data-es="Fresco del día" data-en="Fresh daily">Fresco del día</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refrescos de la Casa -->
+      <div class="flip reveal" tabindex="0" role="button" aria-label="Refrescos de la casa, toca para más información">
+        <div class="flip-in">
+          <div class="face front">
+            <div class="citrus" aria-hidden="true"></div>
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=700&q=80" alt="Vaso alto de refresco helado de la casa con hielo y limón" loading="lazy" />
+            <div class="front-grad"></div>
+            <span class="tap-hint"><span data-es="Toca" data-en="Tap">Toca</span> ↻</span>
+            <div class="front-txt"><h3 data-es="Refrescos de la Casa" data-en="House Drinks">Refrescos de la Casa</h3><span class="es" data-es="Chicha morada y más, hechos aquí" data-en="Chicha morada and more, made here">Chicha morada y más, hechos aquí</span></div>
+          </div>
+          <div class="face back">
+            <h3 data-es="Refrescos de la Casa" data-en="House Drinks">Refrescos de la Casa</h3>
+            <p class="body" data-es="Nuestra chicha morada de maíz morado hervida con piña y canela, y refrescos del día bien helados. Hechos aquí, no salen de una botella." data-en="Our chicha morada from purple corn simmered with pineapple and cinnamon, plus ice-cold drinks of the day. Made here, not poured from a bottle.">Nuestra chicha morada de maíz morado hervida con piña y canela, y refrescos del día bien helados. Hechos aquí, no salen de una botella.</p>
+            <div class="ingredients"><span data-es="Maíz morado" data-en="Purple corn">Maíz morado</span><span data-es="Piña" data-en="Pineapple">Piña</span><span data-es="Canela" data-en="Cinnamon">Canela</span></div>
+            <div class="back-foot"><span class="price" data-es="Hecho en casa" data-en="Made in house">Hecho en casa</span><span class="note" data-es="Pregunta por el precio del día" data-en="Ask for today's price">Pregunta por el precio del día</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section id="historia" class="pad">
+  <div class="wrap split">
+    <div class="story-img reveal">
+      <figure><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=80" alt="Interior cálido de un pequeño restaurante familiar con mesas servidas" loading="lazy" /></figure>
+      <figure><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=500&q=80" alt="Cocinero preparando un plato caliente en la cocina" loading="lazy" /></figure>
+      <figure><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80" alt="Mesa familiar compartiendo varios platos peruanos" loading="lazy" /></figure>
+    </div>
+    <div class="story-copy reveal">
+      <span class="eyebrow" data-es="Nuestra Mesa" data-en="Our Table">Nuestra Mesa</span>
+      <h2 data-es="Un pedacito de Perú en Main Street" data-en="A little piece of Peru on Main Street">Un pedacito de Perú en Main Street</h2>
+      <p data-es="MKY es un sitio chico, de barrio, donde se cocina como en casa. Aquí no hay congelador haciendo el trabajo. Cada plato sale recién hecho, con las recetas de siempre y el sazón que reconoce cualquiera que extrañe la comida de su tierra." data-en="MKY is a small, neighborhood spot where the cooking is done like at home. There's no freezer doing the work here. Every plate comes out freshly made, with the recipes we grew up on and the sazón anyone who misses home will recognize.">MKY es un sitio chico, de barrio, donde se cocina como en casa. Aquí no hay congelador haciendo el trabajo. Cada plato sale recién hecho, con las recetas de siempre y el sazón que reconoce cualquiera que extrañe la comida de su tierra.</p>
+      <ul class="story-list">
+        <li><span class="check">✓</span><span data-es="<b>100% peruano.</b> Sin atajos, sin mezclas. Lo de allá, hecho aquí." data-en="<b>100% Peruvian.</b> No shortcuts, no fusion. The real thing, made here."><b>100% peruano.</b> Sin atajos, sin mezclas. Lo de allá, hecho aquí.</span></li>
+        <li><span class="check">✓</span><span data-es="<b>Abierto bien temprano.</b> Desde las 5:30 de la mañana para el desayuno y el café." data-en="<b>Open early.</b> From 5:30 in the morning for breakfast and coffee."><b>Abierto bien temprano.</b> Desde las 5:30 de la mañana para el desayuno y el café.</span></li>
+        <li><span class="check">✓</span><span data-es="<b>Para llevar o quedarte.</b> Pide por teléfono o siéntate con nosotros." data-en="<b>Takeout or stay.</b> Order by phone or sit down with us."><b>Para llevar o quedarte.</b> Pide por teléfono o siéntate con nosotros.</span></li>
+        <li><span class="check">✓</span><span data-es="<b>Precios de barrio.</b> Comida honesta a precio justo, todos los días." data-en="<b>Neighborhood prices.</b> Honest food at a fair price, every day."><b>Precios de barrio.</b> Comida honesta a precio justo, todos los días.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- VISITA / HOURS + MAP -->
+<section id="visita" class="pad">
+  <div class="wrap visit-grid">
+    <div class="visit-info reveal">
+      <span class="eyebrow" data-es="Visítanos" data-en="Visit Us">Visítanos</span>
+      <h2 data-es="Estamos en el 396 de Main" data-en="Find us at 396 Main">Estamos en el 396 de Main</h2>
+      <table class="hours-table" id="hours">
+        <tbody>
+          <tr data-day="1"><td data-es="Lunes" data-en="Monday">Lunes</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="2"><td data-es="Martes" data-en="Tuesday">Martes</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="3"><td data-es="Miércoles" data-en="Wednesday">Miércoles</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="4"><td data-es="Jueves" data-en="Thursday">Jueves</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="5"><td data-es="Viernes" data-en="Friday">Viernes</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="6"><td data-es="Sábado" data-en="Saturday">Sábado</td><td>5:30 AM &ndash; 8:00 PM</td></tr>
+          <tr data-day="0"><td data-es="Domingo" data-en="Sunday">Domingo</td><td>5:30 AM &ndash; 7:00 PM</td></tr>
+        </tbody>
+      </table>
+      <div class="visit-contact">
+        <a href="https://www.google.com/maps?q=396+Main+St,+City+of+Orange,+NJ+07050" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          396 Main St, City of Orange, NJ 07050
+        </a>
+        <a href="tel:+18627042887">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (862) 704-2887
+        </a>
+      </div>
+    </div>
+    <div class="map-frame reveal">
+      <iframe
+        title="Ubicación de MKY Restaurant, 396 Main St, City of Orange, NJ 07050"
+        src="https://www.google.com/maps?q=396+Main+St,+City+of+Orange,+NJ+07050&z=16&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- WORDS (soft review, tasteful, no star count) -->
+<section id="words">
+  <div class="wrap pad">
+    <div class="quote-wrap reveal">
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <blockquote data-es="&ldquo;Comida 100% peruana, limpio y a buen precio. Se come como en casa.&rdquo;" data-en="&ldquo;100% Peruvian food, clean and fairly priced. It tastes like home.&rdquo;">&ldquo;Comida 100% peruana, limpio y a buen precio. Se come como en casa.&rdquo;</blockquote>
+      <cite data-es="Comensal local · Google" data-en="Local diner · Google">Comensal local · Google</cite>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="pedir" class="pad">
+  <div class="wrap cta-in reveal">
+    <h2 data-es="¿Con hambre? Te lo tenemos listo." data-en="Hungry? We've got you.">¿Con hambre? Te lo tenemos listo.</h2>
+    <p data-es="Llámanos y ordena para llevar, o ven a sentarte. La cocina está prendida desde las 5:30 de la mañana." data-en="Call to order takeout, or come sit down. The kitchen is on from 5:30 in the morning.">Llámanos y ordena para llevar, o ven a sentarte. La cocina está prendida desde las 5:30 de la mañana.</p>
+    <div class="cta-btns">
+      <a class="cta-call" href="tel:+18627042887">(862) 704-2887</a>
+      <a class="cta-dir" href="https://www.google.com/maps?q=396+Main+St,+City+of+Orange,+NJ+07050" target="_blank" rel="noopener" data-es="Cómo llegar" data-en="Get directions">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand"><span class="mark">MKY</span><span>MKY Restaurant<small style="color:var(--gold)" data-es="Cocina Peruana" data-en="Peruvian Kitchen">Cocina Peruana</small></span></div>
+        <p data-es="Cocina peruana casera en el corazón de Main Street, City of Orange. Hecho a mano, todos los días." data-en="Homemade Peruvian cooking in the heart of Main Street, City of Orange. Made by hand, every day.">Cocina peruana casera en el corazón de Main Street, City of Orange. Hecho a mano, todos los días.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-es="Encuéntranos" data-en="Find us">Encuéntranos</h4>
+        <p>396 Main St<br>City of Orange, NJ 07050</p>
+        <a href="tel:+18627042887">(862) 704-2887</a>
+        <a href="https://www.google.com/maps?q=396+Main+St,+City+of+Orange,+NJ+07050" target="_blank" rel="noopener" data-es="Cómo llegar" data-en="Directions">Cómo llegar</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-es="Horario" data-en="Hours">Horario</h4>
+        <p data-es="Lun a Sáb: 5:30 AM &ndash; 8:00 PM" data-en="Mon to Sat: 5:30 AM &ndash; 8:00 PM">Lun a Sáb: 5:30 AM &ndash; 8:00 PM</p>
+        <p data-es="Domingo: 5:30 AM &ndash; 7:00 PM" data-en="Sunday: 5:30 AM &ndash; 7:00 PM">Domingo: 5:30 AM &ndash; 7:00 PM</p>
+        <a href="#carta" data-es="Ver la carta" data-en="See the menu">Ver la carta</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> MKY Restaurant. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></span>
+      <span class="made-by"><span class="spark" aria-hidden="true"></span><span data-es="Hecho con cuidado por" data-en="Crafted with care by">Hecho con cuidado por</span> <a href="https://bysemaj.com" target="_blank" rel="noopener">bysemaj.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="fixed-call" href="tel:+18627042887" aria-label="Llamar a MKY Restaurant al (862) 704-2887">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- NAV scroll state ---- */
+  var nav = document.querySelector('.nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 12); };
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- Flip cards (signature) ---- */
+  document.querySelectorAll('.flip').forEach(function(card){
+    var toggle = function(){ card.classList.toggle('on'); };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* ---- Reveal on scroll ---- */
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, {threshold:0.14, rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- Open / Closed pill (America/New_York) ---- */
+  // hours in minutes from midnight, per weekday (0=Sun..6=Sat)
+  var HOURS = {
+    0:[330,1140], // Sun 5:30 AM - 7:00 PM
+    1:[330,1200],2:[330,1200],3:[330,1200],4:[330,1200],5:[330,1200],6:[330,1200] // Mon-Sat 5:30 AM - 8:00 PM
+  };
+  function nyParts(){
+    try{
+      var fmt = new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',minute:'numeric',hour12:false});
+      var parts = fmt.formatToParts(new Date());
+      var o={}; parts.forEach(function(p){o[p.type]=p.value;});
+      var map={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+      var h=parseInt(o.hour,10); if(h===24)h=0;
+      return {dow:map[o.weekday], mins:h*60+parseInt(o.minute,10)};
+    }catch(e){
+      var d=new Date(); return {dow:d.getDay(), mins:d.getHours()*60+d.getMinutes()};
+    }
+  }
+  function to12(mins){
+    var h=Math.floor(mins/60), m=mins%60, ap=h>=12?'PM':'AM', hh=h%12; if(hh===0)hh=12;
+    return hh + (m? ':'+(m<10?'0'+m:m):'') + ' ' + ap;
+  }
+  function updateStatus(){
+    var p=nyParts(), span=HOURS[p.dow], dot=document.getElementById('dot'), txt=document.getElementById('status-text');
+    var es = document.documentElement.lang === 'es';
+    var open = span && p.mins>=span[0] && p.mins<span[1];
+    if(open){
+      dot.classList.remove('closed');
+      txt.textContent = (es? 'Abierto ahora · cierra ' : 'Open now · closes ') + to12(span[1]);
+    } else {
+      dot.classList.add('closed');
+      // find next opening
+      var nextOpen=null;
+      for(var i=0;i<=7;i++){
+        var d=(p.dow+i)%7, s=HOURS[d];
+        if(!s) continue;
+        if(i===0 && p.mins<s[0]){ nextOpen=s[0]; break; }
+        if(i>0){ nextOpen=s[0]; break; }
+      }
+      if(nextOpen!=null && p.mins<HOURS[p.dow][0]){
+        txt.textContent = (es? 'Cerrado · abre ' : 'Closed · opens ') + to12(HOURS[p.dow][0]);
+      } else {
+        txt.textContent = (es? 'Cerrado · abre 5:30 AM' : 'Closed · opens 5:30 AM');
+      }
+    }
+    // highlight today's row
+    document.querySelectorAll('#hours tr').forEach(function(tr){
+      tr.classList.toggle('today', parseInt(tr.getAttribute('data-day'),10)===p.dow);
+    });
+  }
+
+  /* ---- Language toggle (vetted ES/EN, hand-translated) ---- */
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-'+lang+']').forEach(function(el){
+      el.innerHTML = el.getAttribute('data-'+lang);
+    });
+    var esB=document.getElementById('es-btn'), enB=document.getElementById('en-btn');
+    esB.classList.toggle('on', lang==='es'); esB.setAttribute('aria-pressed', lang==='es');
+    enB.classList.toggle('on', lang==='en'); enB.setAttribute('aria-pressed', lang==='en');
+    document.title = lang==='es'
+      ? 'MKY Restaurant · Sabor 100% Peruano en City of Orange, NJ'
+      : 'MKY Restaurant · 100% Peruvian Flavor in City of Orange, NJ';
+    updateStatus();
+  }
+  document.getElementById('es-btn').addEventListener('click', function(){ setLang('es'); });
+  document.getElementById('en-btn').addEventListener('click', function(){ setLang('en'); });
+
+  updateStatus();
+  setInterval(updateStatus, 60000);
+})();
+</script>
+</body>
+</html>
